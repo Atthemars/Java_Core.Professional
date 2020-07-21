@@ -15,7 +15,7 @@ public class Main {
         array[1] = 07;
         array[2] = 25;
         System.out.println("Массив" + Arrays.toString(array));
-        swapElements(array, 0, 2); //смена элементов местами
+        replaceElements(array, 0, 2); //смена элементов местами
         System.out.println("Поменяем 1й и 3й элементы массива местами: " + Arrays.toString(array));
         /**
          * Задание 2
@@ -39,11 +39,34 @@ public class Main {
          * Соответственно, в текущей коробке фруктов не остается, а в другую перекидываются объекты, которые были в этой коробке;
          * Не забываем про метод добавления фрукта в коробку.
          */
-        
+        Apple appleA = new Apple();
+        Apple appleB = new Apple();
+        Apple appleC = new Apple();
 
+        Orange orangeA = new Orange();
+        Orange orangeB = new Orange();
+        Orange orangeC = new Orange();
+        Orange orangeD = new Orange();
+
+        Box<Apple> box1 = new Box<Apple>(appleA,appleB);
+        Box<Orange> box2 = new Box<Orange>(orangeA,orangeB,orangeC,orangeD);
+        box1.add(appleC); // добавляем в ящик яблоко через метод
+        box2.remove(orangeA); //удаляем из ящика апельсин orange1
+
+
+        System.out.println("сравним вес коробки с яблоками и коробки с апельсинами:");
+        System.out.println(box1.compareWeight(box2));
+        if(box1.compareWeight(box2)) {
+            System.out.println("Коробки равны по весу");
+        } else System.out.println("Коробки не равны по весу");
+
+        Box<Apple> box3 = new Box<Apple>();
+        box1.replaceToAnotherBox(box3);
+        System.out.println("Пересыпали яблоки в новую коробку под яблоки");
     }
 
-    private static void swapElements(Object[] _array, int num1, int num2) {
+
+    private static void replaceElements(Object[] _array, int num1, int num2) {
         Object t = _array[num1];
         _array[num1] = _array[num2];
         _array[num2] = t;
