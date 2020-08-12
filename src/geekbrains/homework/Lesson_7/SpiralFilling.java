@@ -68,7 +68,7 @@ public class SpiralFilling {
             System.out.println("");
         }
 
-        
+
     }
 }
 
